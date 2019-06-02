@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import config from './config.js';
 import './App.css';
 import axios from 'axios';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
@@ -43,7 +44,7 @@ class App extends Component {
     this.state = { user: null };
   }
   componentDidMount() {
-    axios.get('http://localhost:4000/user/current')
+    axios.get(config.api + '/user/current')
       .then(response => {
         this.setState({ user: response.data });
       })

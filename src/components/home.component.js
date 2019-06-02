@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import config from '../config.js';
 import axios from 'axios';
 import { withStyles } from '@material-ui/styles';
 
@@ -18,7 +19,7 @@ class Home extends Component {
     this.state = { balance: '...' };
   }
   componentDidMount() {
-    axios.get('http://localhost:4000/user/'+this.props.user._id+'/balance')
+    axios.get(config.api + '/user/'+this.props.user._id+'/balance')
       .then(response => {
         this.setState({ balance: response.data });
       })

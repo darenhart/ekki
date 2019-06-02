@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import config from '../config.js';
 import axios from 'axios';
 import { withStyles } from '@material-ui/styles';
 
@@ -56,7 +57,7 @@ class NewTransaction extends Component {
         },
         "amount": this.state.amount
       };
-      axios.post('http://localhost:4000/transaction', obj)
+      axios.post(config.api + '/transaction', obj)
         .then(res => {
           this.setState({
             loading: false,

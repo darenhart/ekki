@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import config from '../config.js';
 import axios from 'axios';
 import { withStyles } from '@material-ui/styles';
 
@@ -29,7 +30,7 @@ class Transactions extends Component {
     this.state = { transactions: []};
   }
   componentDidMount(){
-    axios.get('http://localhost:4000/user/'+this.props.user._id+'/transactions')
+    axios.get(config.api + '/user/'+this.props.user._id+'/transactions')
       .then(response => {
         let transactions = response.data.map((t) => {
           t.isDebit = (t.user.id === this.props.user._id);

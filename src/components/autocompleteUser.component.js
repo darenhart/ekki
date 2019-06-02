@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import config from '../config.js';
 import axios from 'axios';
 import { withStyles } from '@material-ui/styles';
 
@@ -97,7 +98,7 @@ class AutocompleteUser extends Component {
   }
   
   componentDidMount() {
-    axios.get('http://localhost:4000/user/')
+    axios.get(config.api + '/user/')
       .then(response => {
         let users = response.data.map((u) => {
           u.name = u.name + ' - ' + u.cpf;
