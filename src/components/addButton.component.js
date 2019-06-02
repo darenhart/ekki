@@ -12,7 +12,7 @@ const CollisionLink = React.forwardRef((props, ref) => (
 
 const styles = {
   root: {
-    position: 'absolute',
+    position: 'fixed',
     bottom: '1.5rem',
     right: '1.5rem',
   },

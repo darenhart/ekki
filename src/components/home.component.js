@@ -18,7 +18,7 @@ class Home extends Component {
     this.state = { balance: '...' };
   }
   componentDidMount() {
-    axios.get('http://localhost:4000/user/5cf1f03220bb573d643abd1b/balance')
+    axios.get('http://localhost:4000/user/'+this.props.user._id+'/balance')
       .then(response => {
         this.setState({ balance: response.data });
       })
@@ -31,7 +31,7 @@ class Home extends Component {
     return (
       <div>
         <h2 className={this.props.classes.title}>
-          Olá João,<br/>seu saldo é R${ this.state.balance }
+          Olá {this.props.user.name},<br/>seu saldo é R${ this.state.balance }
         </h2>
         <AddButton></AddButton>
       </div>
