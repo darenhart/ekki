@@ -8,6 +8,10 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Input from '@material-ui/core/Input';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Button from '@material-ui/core/Button';
+import AddIcon from '@material-ui/icons/Add';
+import IconButton from '@material-ui/core/IconButton';
+import { Link } from 'react-router-dom';
+import Grid from '@material-ui/core/Grid';
 
 import { withSnackbar } from 'notistack';
 import { withRouter } from 'react-router-dom';
@@ -19,6 +23,10 @@ const styles = {
     margin: '1.5rem 0 .5rem 0',
   },
 };
+
+const CollisionLink = React.forwardRef((props, ref) => (
+  <Link innerRef={ref} {...props} />
+));
 
 class NewTransaction extends Component {
   constructor(props) {
@@ -82,7 +90,6 @@ class NewTransaction extends Component {
           props.enqueueSnackbar(error, { variant: 'error' });
         });
     }
-
   }
 
   onUserSelect(userSelected) {
@@ -97,7 +104,19 @@ class NewTransaction extends Component {
         <h3 align="center">Nova transação</h3>
         <form onSubmit={this.onSubmit}>
 
-          <AutocompleteUser onSelect={this.onUserSelect} ></AutocompleteUser>
+          <Grid container spacing={3}>
+
+          <Grid item xs={9}>
+            <AutocompleteUser onSelect={this.onUserSelect} ></AutocompleteUser>
+          </Grid>
+          <Grid item xs={3}>
+            {/* TODO: back to new transaction */}
+            <IconButton  aria-label="Adicionar contato"  component={CollisionLink} to={"/user-form-trans/"} >
+              <AddIcon />
+            </IconButton>
+          </Grid>
+          </Grid>
+
 
           <FormControl className={this.props.classes.margin}>
             <InputLabel htmlFor="transaction-amount">Valor</InputLabel>

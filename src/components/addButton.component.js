@@ -7,7 +7,7 @@ import { withStyles } from '@material-ui/styles';
 import { Link } from 'react-router-dom';
 
 const CollisionLink = React.forwardRef((props, ref) => (
-  <Link innerRef={ref} to="/nova-transacao" {...props} />
+  <Link innerRef={ref} to={props.href} {...props} />
 ));
 
 const styles = {
@@ -23,7 +23,7 @@ class AddButton extends Component {
   render() {
     
     return (
-      <Fab component={CollisionLink} color="primary" aria-label="Add" className={this.props.classes.root} >
+      <Fab component={CollisionLink} color="primary" aria-label="Add" href={this.props.href} className={this.props.classes.root} >
         <AddIcon />
       </Fab>
     )

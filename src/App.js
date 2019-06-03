@@ -8,6 +8,8 @@ import Home from './components/home.component';
 import NewTransaction from './components/newTransaction.component';
 import Transactions from './components/transactions.component';
 import LoadingPage from './components/loadingPage.component';
+import UserForm from './components/userForm.component';
+import UserList from './components/userList.component';
 
 import { withStyles } from '@material-ui/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -85,6 +87,10 @@ class App extends Component {
                 <Route exact path='/' render={(props) => <Home {...props} user={this.state.user} />} />
                 <Route exact path='/nova-transacao' render={(props) => <NewTransaction {...props} user={this.state.user} />} />
                 <Route exact path='/transacoes' render={(props) => <Transactions {...props} user={this.state.user} />} />
+                <Route exact path='/contatos' render={(props) => <UserList {...props} user={this.state.user} />} />
+                <Route exact path='/user-form' render={(props) => <UserForm {...props} user={this.state.user} />} />
+                <Route exact path='/user-form-trans' render={(props) => <UserForm fromTrans="true" {...props} user={this.state.user} />} />
+                <Route exact path='/user-form/:id' render={(props) => <UserForm {...props} user={this.state.user} />} />
               </Switch>
             </Container>
             )

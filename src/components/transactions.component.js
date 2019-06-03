@@ -80,7 +80,7 @@ class Transactions extends Component {
             :
             (<LoadingPage></LoadingPage>)
           }
-        <AddButton></AddButton>
+        <AddButton href="/nova-transacao"></AddButton>
       </div>
     )
   }
