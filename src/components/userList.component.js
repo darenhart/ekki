@@ -34,7 +34,12 @@ class UserList extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { users: [], dialogOpen: false, deletingUser: {} };
+    this.state = {
+      users: [],
+      dialogOpen: false,
+      deletingUser: {},
+      loading: true
+    };
     this.delete = this.delete.bind(this);
     this.handleClickOpen = this.handleClickOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
@@ -45,10 +50,13 @@ class UserList extends Component {
   }
 
   reload() {
-    this.setState({ users: [] });
+    this.setState({ users: [], loading: true });
     axios.get(config.api + '/user/')
       .then(response => {
-        this.setState({ users: response.data });
+        this.setState({ 
+          users: response.data,
+          loading: false
+        });
       })
       .catch(function (error) {
         console.log(error);
@@ -94,12 +102,11 @@ class UserList extends Component {
   }
 
   render() {
-
     return (
       <div>
         <h3 align="center">Contatos</h3>
 
-          {(this.state.users.length) ?
+          {(!this.state.loading) ?
             (
              <Paper>
               <Table size="small">

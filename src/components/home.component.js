@@ -3,7 +3,6 @@ import config from '../config.js';
 import axios from 'axios';
 import { withStyles } from '@material-ui/styles';
 import Link from '@material-ui/core/Link';
-import Typography from '@material-ui/core/Typography';
 
 import AddButton from './addButton.component';
 
