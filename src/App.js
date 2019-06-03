@@ -36,6 +36,9 @@ const styles = {
   center: {
     margin: '28vh',
   },
+  appbar: {
+    backgroundColor: 'darkslategrey'
+  }
 };
 
 class App extends Component {
@@ -58,10 +61,10 @@ class App extends Component {
         <SnackbarProvider maxSnack={3}>
 
         <Router>
-          <AppBar position="static">
+          <AppBar position="static" className={this.props.classes.appbar}>
             <Toolbar>
               <Typography variant="h6" className={this.props.classes.title}>
-                Ekki
+                Banco Ekki
               </Typography>
               <IconButton component={CollisionLink} to="/" color="inherit" title="Home" aria-label="Home">
                 <HomeIcon />

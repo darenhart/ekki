@@ -21,6 +21,10 @@ const styles = {
     color: 'green',
     whiteSpace: 'nowrap'
   },
+  small: {
+    fontSize: '11px',
+    color: 'grey'
+  }
 };
 
 class Transactions extends Component {
@@ -56,9 +60,13 @@ class Transactions extends Component {
                 { this.state.transactions.map((object, i) => (
                     <TableRow key={object._id}>
                       <TableCell>
+                        <div className={this.props.classes.small}>
+                          {new Date(object.timestamp).toLocaleTimeString('pt-BR', { year: 'numeric', month: '2-digit', day: '2-digit' })}
+                        </div>
                         {object.isDebit ? "Para " : "De " }
                         <br/>
                         {object.isDebit ? object.user_favoured.name : object.user.name }
+                        <br/>
                       </TableCell>
                       <TableCell align="right" className={object.isDebit ? this.props.classes.red : this.props.classes.green}>
                         {object.isDebit ? '-' : '+' } R$ {object.amount}

@@ -41,11 +41,11 @@ class NewTransaction extends Component {
   }
 
   onSubmit(e) {
-    this.setState({loading: true});
     e.preventDefault();
     let t = this;
     let props = this.props;
     if (this.state.user_favoured && this.state.amount) {
+      this.setState({loading: true});
       const obj = {
         "user": {
           "id": this.props.user._id,
